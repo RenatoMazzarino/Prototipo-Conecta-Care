@@ -635,7 +635,7 @@ a {
 }
 
 /* =================================================================== */
-/* 6. MODAL (Perfil Completo)
+/* 6. MODAL (Perfil Completo) - SEÇÃO ATUALIZADA
 /* =================================================================== */
 .modal-overlay {
     position: fixed;
@@ -657,6 +657,9 @@ a {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
     padding: 30px;
     position: relative;
+    max-height: 90vh; /* Para permitir scroll */
+    display: flex; /* Para layout de scroll */
+    flex-direction: column; /* Para layout de scroll */
 }
 .modal-close {
     position: absolute;
@@ -673,6 +676,7 @@ a {
     padding-bottom: 20px;
     border-bottom: 1px solid var(--color-border);
     margin-bottom: 20px;
+    flex-shrink: 0; /* Não encolher */
 }
 .profile-details h4 {
     margin: 0 0 5px 0;
@@ -680,6 +684,102 @@ a {
     font-weight: 600;
     color: var(--color-primary);
 }
+
+/* --- (NOVO) Wrapper da Foto de Perfil --- */
+.profile-photo-wrapper {
+    position: relative;
+    width: 70px;
+    height: 70px;
+    flex-shrink: 0;
+}
+.profile-photo {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 2rem;
+    font-weight: 600;
+    border: 2px solid var(--color-border);
+}
+.profile-coren-tag {
+    position: absolute;
+    bottom: -5px;
+    right: -10px;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    border: 2px solid white;
+}
+.profile-coren-tag.active {
+    background-color: var(--color-success);
+    color: white;
+}
+.profile-coren-tag.inactive {
+    background-color: var(--color-urgent);
+    color: white;
+}
+.profile-coren-tag .material-icons-outlined {
+    font-size: 14px;
+}
+
+/* --- (NOVO) Avaliação por Estrelas --- */
+.star-rating {
+    display: flex;
+    gap: 2px;
+    color: #FFC107; /* Amarelo Estrela */
+    margin-top: 5px;
+}
+.star-rating .material-icons-outlined {
+    font-size: 20px;
+}
+/* Estrela vazia */
+.star-rating .material-icons-outlined.empty {
+    color: var(--color-border);
+}
+
+
+.profile-body {
+    overflow-y: auto; /* Permite scroll no corpo do modal */
+}
+
+/* --- (NOVO) Seção de Avaliações --- */
+.profile-reviews {
+    margin-top: 20px;
+}
+.profile-reviews h5 {
+    font-weight: 600;
+    color: var(--color-primary);
+    margin-bottom: 10px;
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: 5px;
+}
+.review-item {
+    border-bottom: 1px dashed var(--color-border);
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+.review-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+.review-item blockquote {
+    margin: 0 0 5px 0;
+    font-style: italic;
+    color: var(--color-text-dark);
+}
+.review-item span {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-text-subtle);
+}
+
 .profile-actions {
     display: flex;
     gap: 15px;
@@ -687,6 +787,7 @@ a {
     border-top: 1px solid var(--color-border);
     margin-top: 20px;
     justify-content: flex-end;
+    flex-shrink: 0; /* Não encolher */
 }
 .btn-action {
     padding: 10px 20px;
@@ -703,7 +804,7 @@ a {
 .btn-approve { background-color: var(--color-success); color: white; }
 
 /* =================================================================== */
-/* 7. RESPONSIVIDADE (Mobile) - Continuação
+/* 7. RESPONSIVIDADE (Mobile)
 /* =================================================================== */
 @media (max-width: 768px) {
     .main-layout {
