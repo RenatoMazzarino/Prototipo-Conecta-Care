@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conecta Care - Dashboard</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+    <header class="global-top-bar">
+        <div class="top-bar-left">
+            <span class="material-icons-outlined sidebar-toggle" id="sidebar-toggle">menu</span>
+            <a href="dashboard.html" class="logo">
+                <span class="material-icons-outlined" style="color: var(--color-accent);">health_and_safety</span>
+                Conecta Care
+            </a>
+        </div>
+        
+        <div class="top-bar-center">
+            <div class="global-search">
+                <span class="material-icons-outlined">search</span>
+                <input type="text" placeholder="Pesquisar pacientes, profissionais...">
+            </div>
+        </div>
+        
+        <div class="top-bar-right">
+            <span class="material-icons-outlined icon-action">notifications</span>
+            <div class="user-profile">
+                <div class="user-photo">HC</div>
+                <span class="user-name">Home Care XYZ</span>
+                <span class="material-icons-outlined">expand_more</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="main-layout" id="main-layout">
+        
+        <aside class="sidebar" id="sidebar">
+            <nav>
+                <a href="dashboard.html" class="nav-item active">
+                    <span class="material-icons-outlined">dashboard</span>
+                    <span class="nav-text">Dashboard</span>
+                </a>
+                <a href="escala.html" class="nav-item">
+                    <span class="material-icons-outlined">calendar_today</span>
+                    <span class="nav-text">Gestão de Escala</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <span class="material-icons-outlined">medical_services</span>
+                    <span class="nav-text">Gestão de Plantões</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <span class="material-icons-outlined">groups</span>
+                    <span class="nav-text">Pacientes</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <span class="material-icons-outlined">badge</span>
+                    <span class="nav-text">Profissionais</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <span class="material-icons-outlined">payments</span>
+                    <span class="nav-text">Financeiro</span>
+                </a>
+                <div class="nav-item" style="margin-top: 30px; border-top: 1px solid var(--color-border); padding-top: 15px;">
+                    <span class="material-icons-outlined">settings</span>
+                    <span class="nav-text">Configurações</span>
+                </div>
+                <a href="index.html" class="nav-item"> <span class="material-icons-outlined">logout</span>
+                    <span class="nav-text">Desconectar</span>
+                </a>
+            </nav>
+        </aside>
+
+        <main class="content-stage" id="content-stage">
+            <h1>Dashboard</h1>
+            <p>Este é o conteúdo da página Dashboard. (Aqui colocaremos os KPIs e gráficos).</p>
+        </main>
+        
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const toggleButton = document.getElementById('sidebar-toggle');
+            const sidebar = document.getElementById('sidebar');
+            const mainLayout = document.getElementById('main-layout');
+            const overlay = document.getElementById('sidebar-overlay');
+
+            function toggleSidebar() {
+                if (window.innerWidth <= 768) {
+                    sidebar.classList.toggle('visible');
+                    overlay.classList.toggle('visible');
+                } else {
+                    sidebar.classList.toggle('collapsed');
+                    mainLayout.classList.toggle('collapsed');
+                }
+            }
+
+            toggleButton.addEventListener('click', toggleSidebar);
+            overlay.addEventListener('click', toggleSidebar);
+        });
+    </script>
+
+</body>
+</html>

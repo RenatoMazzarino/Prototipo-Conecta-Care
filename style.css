@@ -1,0 +1,382 @@
+/* =================================================================== */
+/* 1. VARIÁVEIS DE COR (PALETA CONECTA CARE) & FONTES
+/* =================================================================== */
+:root {
+    /* Paleta Principal */
+    --color-primary: #1A2536;      /* Azul-Marinho (Profissionalismo) */
+    --color-accent: #00C49A;       /* Verde-Água (Destaque, Saúde) */
+    --color-urgent: #E81123;       /* Vermelho (Urgência, Erros) */
+
+    /* Tons de Cinza (Suporte) */
+    --color-bg-light: #F4F7F9;     /* Fundo (Cinza Gelo) */
+    --color-bg-card: #FFFFFF;      /* Fundo de Cards e Menus */
+    --color-text-dark: #4A5568;    /* Textos Principais (Cinza Escuro) */
+    --color-text-subtle: #A0AEC0;  /* Textos Secundários (Cinza Médio) */
+    --color-border: #E0E0E0;       /* Bordas e Divisores */
+
+    /* Estética Fluent */
+    --shadow-default: 0 1px 4px rgba(0, 0, 0, 0.08);
+    --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    font-family: var(--font-family);
+    margin: 0;
+    background-color: var(--color-bg-light);
+    color: var(--color-text-dark);
+}
+
+a {
+    text-decoration: none;
+    color: var(--color-accent);
+}
+
+/* =================================================================== */
+/* 2. PÁGINA DE LOGIN (index.html)
+/* =================================================================== */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--color-bg-light);
+}
+
+.login-box {
+    width: 100%;
+    max-width: 400px;
+    padding: 40px;
+    background-color: var(--color-bg-card);
+    box-shadow: var(--shadow-default);
+    border-radius: 8px;
+    box-sizing: border-box; /* Garante que o padding não estoure */
+    margin: 20px; /* Margem para telas pequenas */
+}
+
+.login-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    margin-bottom: 30px;
+}
+
+.login-box h2 {
+    font-weight: 300;
+    color: var(--color-text-dark);
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 25px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--color-text-dark);
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    box-sizing: border-box; /* Garante que o padding não estoure */
+}
+
+.btn-primary {
+    width: 100%;
+    padding: 14px;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: var(--color-accent);
+    color: white;
+    transition: background-color 0.2s;
+}
+
+.btn-primary:hover {
+    background-color: #00A986; /* Tom mais escuro do Verde-Água */
+}
+
+.login-footer {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 0.9rem;
+}
+
+/* =================================================================== */
+/* 3. APP SHELL (Cabeçalho e Sidebar)
+/* =================================================================== */
+
+/* 3.1 Cabeçalho Global (Topo) */
+.global-top-bar {
+    height: 50px;
+    background-color: var(--color-bg-card);
+    border-bottom: 1px solid var(--color-border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 15px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+.top-bar-left { display: flex; align-items: center; }
+.top-bar-center { flex-grow: 1; padding: 0 20px; }
+.top-bar-right { display: flex; align-items: center; gap: 15px; }
+
+.logo {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.sidebar-toggle {
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 4px;
+    margin-right: 15px;
+    display: flex;
+    align-items: center;
+}
+.sidebar-toggle:hover {
+    background-color: var(--color-bg-light);
+}
+
+.global-search {
+    width: 100%;
+    max-width: 500px;
+    position: relative;
+}
+
+.global-search input {
+    width: 100%;
+    padding: 8px 12px 8px 35px;
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    background-color: var(--color-bg-light);
+    font-family: var(--font-family);
+}
+
+.global-search .material-icons-outlined {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--color-text-subtle);
+    font-size: 20px;
+}
+
+.icon-action {
+    color: var(--color-text-subtle);
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 50%;
+}
+.icon-action:hover {
+    background-color: var(--color-bg-light);
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 4px;
+}
+.user-profile:hover {
+    background-color: var(--color-bg-light);
+}
+.user-photo {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: #E91E63;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+.user-name {
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+/* 3.2 Layout Principal (Abaixo do Topo) */
+.main-layout {
+    display: grid;
+    grid-template-columns: 250px 1fr; /* Largura padrão da Sidebar */
+    height: calc(100vh - 51px);
+    margin-top: 51px;
+    transition: grid-template-columns 0.3s;
+}
+
+/* 3.3 Sidebar (Esquerda) */
+.sidebar {
+    background-color: var(--color-bg-card);
+    padding: 20px 10px;
+    overflow: hidden;
+    white-space: nowrap;
+    transition: width 0.3s, transform 0.3s;
+    border-right: 1px solid var(--color-border);
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    padding: 12px 10px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 0.95rem;
+    margin-bottom: 5px;
+    transition: background-color 0.2s, color 0.2s;
+    text-decoration: none;
+    color: var(--color-text-dark);
+}
+
+.nav-item .nav-text {
+    margin-left: 15px;
+    opacity: 1;
+    transition: opacity 0.2s;
+}
+
+.nav-item .material-icons-outlined {
+    font-size: 22px;
+    color: var(--color-text-subtle);
+    transition: color 0.2s;
+}
+
+.nav-item:hover, .nav-item.active {
+    background-color: #E6F9F5; /* Fundo Verde-Água claro */
+    color: var(--color-accent);
+}
+
+.nav-item:hover .nav-text, .nav-item.active .nav-text {
+    font-weight: 600;
+    color: var(--color-accent);
+}
+
+.nav-item:hover .material-icons-outlined, .nav-item.active .material-icons-outlined {
+    color: var(--color-accent);
+}
+
+/* 3.4 Estado Recolhido (Collapsed - Desktop) */
+.sidebar.collapsed {
+    width: 50px; 
+}
+
+.main-layout.collapsed {
+    grid-template-columns: 70px 1fr;
+}
+
+.sidebar.collapsed .nav-text {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.sidebar.collapsed .nav-item {
+    justify-content: center;
+}
+
+.sidebar.collapsed .nav-item .nav-text {
+    margin-left: 0;
+}
+
+/* 3.5 Conteúdo Principal (Stage) */
+.content-stage {
+    padding: 30px;
+    overflow-y: auto; 
+}
+
+.content-stage h1 {
+    font-weight: 300;
+    font-size: 2rem;
+    margin-top: 0;
+    color: var(--color-primary);
+}
+
+/* 3.6 Overlay Mobile */
+.sidebar-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.4);
+    z-index: 1500;
+}
+
+/* =================================================================== */
+/* 4. RESPONSIVIDADE (Mobile)
+/* =================================================================== */
+@media (max-width: 768px) {
+    .main-layout {
+        grid-template-columns: 1fr; 
+    }
+
+    .sidebar {
+        position: fixed;
+        top: 51px; 
+        left: 0;
+        height: calc(100vh - 51px);
+        z-index: 2000;
+        transform: translateX(-100%); 
+        width: 250px;
+    }
+
+    .sidebar.visible {
+        transform: translateX(0);
+        box-shadow: 4px 0 10px rgba(0,0,0,0.1);
+    }
+    
+    .sidebar-overlay.visible {
+        display: block;
+    }
+    
+    /* Ignora o 'collapsed' no mobile */
+    .sidebar.collapsed { 
+        transform: translateX(-100%);
+        width: 250px;
+    }
+    .main-layout.collapsed {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Oculta itens do top bar */
+    .global-search { display: none; }
+    .user-name { display: none; }
+    
+    .top-bar-left {
+        flex-grow: 1; 
+    }
+    .top-bar-center {
+        display: none; 
+    }
+    .content-stage {
+        padding: 20px; 
+    }
+}
