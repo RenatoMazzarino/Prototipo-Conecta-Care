@@ -20,6 +20,7 @@
     --shadow-default: 0 1px 4px rgba(0, 0, 0, 0.08);
     --shadow-hover: 0 2px 8px rgba(0, 0, 0, 0.12);
     --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --slot-height: 48px; /* altura de cada card de plantão (ajustável) */
 }
 
 body {
@@ -245,6 +246,7 @@ a {
     white-space: nowrap;
     transition: width 0.3s, transform 0.3s;
     border-right: 1px solid var(--color-border);
+    box-sizing: border-box; /* inclue padding na largura para evitar clipping quando recolhida */
 }
 
 .nav-item {
@@ -289,6 +291,8 @@ a {
 /* 3.4 Estado Recolhido (Collapsed - Desktop) */
 .sidebar.collapsed {
     width: 70px; /* Alinha com grid-template-columns em .main-layout.collapsed para evitar desalinhamento que pode ocultar ícones */
+    padding-left: 0; /* reduz padding para evitar clipping dos ícones */
+    padding-right: 0;
 }
 
 .main-layout.collapsed {
@@ -474,21 +478,25 @@ a {
     flex-direction: column;
     gap: 8px;
     min-width: 140px; /* evita que o conteúdo estreite demais e transborde para a coluna anterior */
+    max-height: calc(var(--slot-height) * 2 + 8px); /* mostra apenas 2 slots visíveis por célula */
+    overflow: hidden; /* esconde qualquer slot adicional visualmente */
+    align-items: stretch;
 }
 
 /* Slots de Plantão (Cards Internos) */
 .slot-card {
-    padding: 8px 10px;
-    border-radius: 4px;
-    font-size: 0.85rem;
+    padding: 10px 12px;
+    border-radius: 6px;
+    font-size: 0.95rem;
     font-weight: 500;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
     transition: transform 0.1s, box-shadow 0.2s;
     cursor: pointer;
     width: 100%;
     box-sizing: border-box; /* garante que padding não provoque overflow horizontal */
+    min-height: var(--slot-height);
 }
 .slot-card:hover {
     transform: translateY(-1px);
@@ -511,16 +519,33 @@ a {
 }
 .initials {
     display: inline-flex;
-    width: 20px;
-    height: 20px;
+    width: 28px;
+    height: 28px;
     border-radius: 50%;
     color: white;
     justify-content: center;
     align-items: center;
-    font-size: 0.7rem;
-    font-weight: 600;
-    margin-right: 8px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    margin-right: 10px;
     flex-shrink: 0;
+}
+
+.slot-meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.slot-name {
+    font-weight: 600;
+}
+.slot-tag {
+    background: rgba(0,0,0,0.06);
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--color-text-subtle);
 }
 
 /* =================================================================== */
