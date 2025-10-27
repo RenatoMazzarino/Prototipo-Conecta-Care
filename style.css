@@ -288,7 +288,7 @@ a {
 
 /* 3.4 Estado Recolhido (Collapsed - Desktop) */
 .sidebar.collapsed {
-    width: 50px; 
+    width: 70px; /* Alinha com grid-template-columns em .main-layout.collapsed para evitar desalinhamento que pode ocultar ícones */
 }
 
 .main-layout.collapsed {
@@ -441,6 +441,7 @@ a {
     width: 100%;
     min-width: 900px; /* Força o scroll se for menor que isso */
     border-collapse: collapse;
+    table-layout: fixed; /* Força colunas estáveis para evitar overflow visual entre colunas */
 }
 .scale-table th, .scale-table td {
     padding: 15px;
@@ -472,6 +473,7 @@ a {
     display: flex;
     flex-direction: column;
     gap: 8px;
+    min-width: 140px; /* evita que o conteúdo estreite demais e transborde para a coluna anterior */
 }
 
 /* Slots de Plantão (Cards Internos) */
@@ -485,6 +487,8 @@ a {
     justify-content: space-between;
     transition: transform 0.1s, box-shadow 0.2s;
     cursor: pointer;
+    width: 100%;
+    box-sizing: border-box; /* garante que padding não provoque overflow horizontal */
 }
 .slot-card:hover {
     transform: translateY(-1px);
